@@ -141,7 +141,8 @@ nft_main_conf_content: 'etc/nftables.conf.j2'
 #
 # Must be a valid nft command, like "flush ruleset", "destroy table <mytable>", or
 # "destroy chain <mytable> <mychain>"
-nft_flush_cmd: 'flush ruleset'
+nft_flush_cmd: 
+  - 'flush ruleset'
                                                                    # ]]]
 # Nftables vars definition [[[
 # ----------------------------
