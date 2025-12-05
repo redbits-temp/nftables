@@ -15,7 +15,7 @@ ProtectSystem=full
 ProtectHome=true
 ExecStart={{ nft__bin_location }} -f {{ nft_main_conf_path }}
 ExecReload={{ nft__bin_location }} -f {{ nft_main_conf_path }}
-ExecStop={{ nft__bin_location }} {{ nft_flush_cmd }}
+ExecStop=/bin/sh -c '{{ nft_flush_cmd | map("regex_replace", "^(.*)$", nft__bin_location ~ " \\1") | join("; ") }}'
 
 [Install]
 WantedBy=sysinit.target
